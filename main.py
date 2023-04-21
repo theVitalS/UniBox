@@ -7,11 +7,16 @@ class MenuItem:
         self.image = pygame.image.load(image)
         self.pos = position
         image_rect = self.image.get_rect()
-        self.backRect = pygame.Rect(position[0], position[1], image_rect.width+40, image_rect.height+40)
+        self.backRect = pygame.Rect(position[0], position[1],
+                                    image_rect.width+40, image_rect.height+40)
 
     def bilt(self, screen):
         pygame.draw.rect(screen, (20, 42, 79), self.backRect)
         screen.blit(self.image, (self.pos[0]+20, self.pos[1]+20))
+
+    def ison(self):
+        return self.backRect.collidepoint(pygame.mouse.get_pos())
+
 
 
 WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
@@ -30,6 +35,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if item.ison():
+                print("Menu Clicked")
 
     screen.blit(gradient, screen_rect)
     item.bilt(screen)
