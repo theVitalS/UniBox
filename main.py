@@ -1,30 +1,6 @@
 import pygame
 import gradient
-
-
-class MenuItem:
-    def __init__(self, image, text, position):
-        self.image = pygame.image.load(image)
-        self.pos = position
-        self.image_rect = self.image.get_rect()
-        self.backRect = pygame.Rect(position[0], position[1],
-                                    self.image_rect.width+40, self.image_rect.height+55)
-
-        self.font = pygame.font.Font('fonts/KdamThmor.ttf', 25)
-        self.text = self.font.render(text, True, (255, 255, 255))
-        self.textRect = self.text.get_rect()
-        self.textRect.center = (self.backRect.width//2+self.backRect.x,
-                                self.textRect.height+self.image_rect.y+self.image_rect.height+20)
-
-    def bilt(self, screen):
-        pygame.draw.rect(screen, (20, 42, 79), self.backRect)
-        screen.blit(self.image, (self.pos[0]+20, self.pos[1]+20))
-        screen.blit(self.text, self.textRect)
-
-    def ison(self):
-        return self.backRect.collidepoint(pygame.mouse.get_pos())
-
-
+import menu
 
 
 WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
@@ -37,8 +13,12 @@ running = True
 screen_rect = pygame.Rect(0, 0, WINDOW_HEIGHT, WINDOW_WIDTH)
 gradient = gradient.gradientRect((48, 133, 200), (10, 17, 59), screen_rect)
 
-mail = MenuItem("assets/mail.png", "MAIL", (10, 20))
-file = MenuItem("assets/file.png", "FILE", (300, 20))
+m1 = menu.MenuItem("assets/mail.png", "MAIL 1", (30, 20))
+m2 = menu.MenuItem("assets/mail.png", "MAIL 2", (270, 20))
+m3 = menu.MenuItem("assets/mail.png", "MAIL 3", (540, 20))
+f1 = menu.MenuItem("assets/file.png", "FILE 1", (30, 220))
+f2 = menu.MenuItem("assets/file.png", "FILE 2", (270, 220))
+f3 = menu.MenuItem("assets/file.png", "FILE 3", (540, 220))
 
 while running:
     for event in pygame.event.get():
@@ -46,15 +26,32 @@ while running:
             running = False
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if mail.ison():
-                print("Menu Clicked")
+            pass
+            if m1.ison():
+                print("Menu 1 Clicked")
 
-            if file.ison():
-                print("File Clicked")
+            if m2.ison():
+                print("Menu 2 Clicked")
+
+            if m3.ison():
+                print("Menu 3 Clicked")
+
+            if f1.ison():
+                print("File 1 Clicked")
+
+            if f2.ison():
+                print("File 2 Clicked")
+
+            if f3.ison():
+                print("File 3 Clicked")
 
     screen.blit(gradient, screen_rect)
-    mail.bilt(screen)
-    file.bilt(screen)
+    m1.bilt(screen)
+    m2.bilt(screen)
+    m3.bilt(screen)
+    f1.bilt(screen)
+    f2.bilt(screen)
+    f3.bilt(screen)
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
