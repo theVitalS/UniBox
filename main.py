@@ -2,7 +2,6 @@ import pygame
 import gradient
 import menu
 
-
 WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
 
 pygame.init()
@@ -13,7 +12,7 @@ running = True
 screen_rect = pygame.Rect(0, 0, WINDOW_HEIGHT, WINDOW_WIDTH)
 gradient = gradient.gradientRect((48, 133, 200), (10, 17, 59), screen_rect)
 
-m1 = menu.MenuItem("assets/mail.png", "MAIL 1", (30, 20))
+m1 = menu.MenuItem("assets/mail.png", "LOREM IPSUM", (30, 20))
 m2 = menu.MenuItem("assets/mail.png", "MAIL 2", (270, 20))
 m3 = menu.MenuItem("assets/mail.png", "MAIL 3", (540, 20))
 f1 = menu.MenuItem("assets/file.png", "FILE 1", (30, 220))
@@ -46,12 +45,12 @@ while running:
                 print("File 3 Clicked")
 
     screen.blit(gradient, screen_rect)
-    m1.bilt(screen)
-    m2.bilt(screen)
-    m3.bilt(screen)
-    f1.bilt(screen)
-    f2.bilt(screen)
-    f3.bilt(screen)
+    m1.blit(screen)
+    m2.blit(screen)
+    m3.blit(screen)
+    f1.blit(screen)
+    f2.blit(screen)
+    f3.blit(screen)
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60

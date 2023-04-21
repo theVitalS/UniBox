@@ -14,8 +14,8 @@ class MenuItem:
         self.textRect.center = (self.backRect.width//2+self.backRect.x,
                                 self.backRect.height+self.backRect.y-self.textRect.height//2)
 
-    def bilt(self, screen):
-        pygame.draw.rect(screen, (20, 42, 79), self.backRect)
+    def blit(self, screen):
+        # pygame.draw.rect(screen, (20, 42, 79), self.backRect)
         screen.blit(self.image, (self.pos[0]+20, self.pos[1]+20))
         screen.blit(self.text, self.textRect)
 
